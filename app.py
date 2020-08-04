@@ -38,14 +38,14 @@ def default():
   return 'Hello!'
 
 # route to return all people
-@app.route('/api/people', methods=['GET'])
+@app.route('/api/books', methods=['GET'])
 def index():
    # connection for MariaDB
    conn = mariadb.connect(**config)
    # create a connection cursor
    cur = conn.cursor()
    # execute a SQL statement
-   cur.execute("select * from people")
+   cur.execute("select * from books")
 
    # serialize results into JSON
    row_headers=[x[0] for x in cur.description]
