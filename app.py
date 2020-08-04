@@ -22,7 +22,6 @@ export PORT=3306
 export USER=root
 export PASSWORD=Password123!
 export DATABASE=demo
-'''
 
 config = {
     'host': str(os.environ['HOST']),
@@ -31,11 +30,33 @@ config = {
     'password': str(os.environ['PASSWORD']),
     'database': str(os.environ['DATABASE'])
 }
+'''
 
-# route to return all people
+
+def create_config():
+  config = {}
+
+  print(os.environ.get('HOST'))
+
+  if (os.environ.get('HOST') == None):
+    config['host'] = '127.0.0.1'
+  if (os.environ.get('PORT') == None):
+    config['port'] = 3306
+  if (os.environ.get('USER') == None):
+    config['user'] = 'root'
+  if (os.environ.get('PASSWORD') == None):
+    config['password'] = "Password123!"
+  if (os.environ.get('DATABASE') == None):
+    config['database'] = 'demo'
+
+  return config
+
+
+# route to return hello.
 @app.route('/', methods=['GET'])
 def default():
   return 'Hello!'
+
 
 # route to return all people
 @app.route('/api/books', methods=['GET'])
@@ -57,5 +78,8 @@ def index():
    # return the results!
    return json.dumps(json_data)
 
+
+# MAIN
+config = create_config()
 app.run()
 
