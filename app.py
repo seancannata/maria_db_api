@@ -16,6 +16,11 @@ config = {
 }
 
 # route to return all people
+@app.route('/', methods=['GET'])
+def default():
+  return 'Hello!'
+
+# route to return all people
 @app.route('/api/people', methods=['GET'])
 def index():
    # connection for MariaDB

@@ -13,4 +13,6 @@ RUN apt-get install libmariadb3 libmariadb-dev -y
 COPY ./requirements.txt /requirements.txt
 RUN pip3 install -r requirements.txt
 
+ADD app.py /
+
 CMD [ "python", "./app.py" ]
