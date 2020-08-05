@@ -15,4 +15,8 @@ RUN pip3 install -r requirements.txt
 
 ADD app.py /
 
+EXPOSE 5000
+
 CMD [ "python3", "./app.py" ]
+# CMD ["flask", "run"]
+# CMD ["python3" "manage.py" "run" "-h" "0.0.0.0"]

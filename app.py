@@ -36,7 +36,7 @@ config = {
 def create_config():
   config = {}
 
-  print(os.environ.get('HOST'))
+  # print(os.environ.get('HOST'))
 
   if (os.environ.get('HOST') == None):
     config['host'] = '127.0.0.1'
@@ -80,6 +80,6 @@ def index():
 
 
 # MAIN
-config = create_config()
-app.run()
-
+if __name__ == '__main__':
+  config = create_config()
+  app.run(host=str(os.environ.get('HOST')))
