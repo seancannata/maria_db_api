@@ -3,6 +3,7 @@ import flask
 import json
 import mariadb
 import os
+import logging
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -34,9 +35,13 @@ config = {
 
 
 def create_config():
-  config = {}
-
-  # print(os.environ.get('HOST'))
+  config = {
+    'host': str(os.environ['HOST']),
+    'port': int(os.environ['PORT']),
+    'user': str(os.environ['USER']),
+    'password': str(os.environ['PASSWORD']),
+    'database': str(os.environ['DATABASE'])
+  }
 
   if (os.environ.get('HOST') == None):
     config['host'] = '127.0.0.1'
@@ -64,7 +69,7 @@ def index():
   conn = mariadb.connect(user=config['user'],
     password=config['password'],
     host=config['host'],
-    port=config['port'] = 3306,
+    port=config['port'],
     database='test')
   cur = conn.cursor()
   cur.execute("select * from books")
