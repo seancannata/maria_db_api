@@ -61,22 +61,15 @@ def default():
 # route to return all people
 @app.route('/api/books', methods=['GET'])
 def index():
-   # connection for MariaDB
-   conn = mariadb.connect(**config)
-   # create a connection cursor
-   cur = conn.cursor()
-   # execute a SQL statement
-   cur.execute("select * from books")
-
-   # serialize results into JSON
-   row_headers=[x[0] for x in cur.description]
-   rv = cur.fetchall()
-   json_data=[]
-   for result in rv:
-        json_data.append(dict(zip(row_headers,result)))
-
-   # return the results!
-   return json.dumps(json_data)
+  conn = mariadb.connect(config)
+  cur = conn.cursor()
+  cur.execute("select * from books")
+  row_headers=[x[0] for x in cur.description]
+  rv = cur.fetchall()
+  json_data=[]
+  for result in rv:
+    json_data.append(dict(zip(row_headers,result)))
+  return json.dumps(json_data)
 
 
 # MAIN
