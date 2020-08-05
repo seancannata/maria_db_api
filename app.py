@@ -61,7 +61,11 @@ def default():
 # route to return all people
 @app.route('/api/books', methods=['GET'])
 def index():
-  conn = mariadb.connect(config)
+  conn = mariadb.connect(user=config['user'],
+    password=config['password'],
+    host=config['host'],
+    port=config['port'] = 3306,
+    database='test')
   cur = conn.cursor()
   cur.execute("select * from books")
   row_headers=[x[0] for x in cur.description]
