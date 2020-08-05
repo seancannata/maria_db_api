@@ -82,4 +82,4 @@ def index():
 # MAIN
 if __name__ == '__main__':
   config = create_config()
-  app.run(host=str(os.environ.get('HOST')))
+  app.run()
