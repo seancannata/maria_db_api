@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update -y
-RUN apt-get install -y python3-pip python3.8
+RUN apt-get install -y python3-pip python3.8 curl
 RUN apt-get install -y wget 
 
 RUN wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
