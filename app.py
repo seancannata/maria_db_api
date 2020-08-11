@@ -60,7 +60,7 @@ def create_config():
 # route to return hello.
 @app.route('/', methods=['GET'])
 def default():
-  return 'Hello!'
+  return 'Goodbye!'
 
 
 # route to return all people
